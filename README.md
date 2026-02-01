@@ -17,6 +17,10 @@ In early 2022, as part of v2.1.0b1, the "Host Matrix" snapin was dropped from th
 ## Changes to original
 Where possible, I've kept the snapin as close to the latest version available in the 2.0.0 branch, however made some changes as below:
 
+### v2.4.x
+- Remediate CustomizableSidebarSnapin imports, which moved at some point after 2.3
+- Update get_filter_headers parameters 
+
 ### v2.2.x
 - Import 'html' from cmk.gui.htmllib.html as cmk.gui.globals no longer exists
 
