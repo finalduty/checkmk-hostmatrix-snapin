@@ -17,6 +17,9 @@ In early 2022, as part of v2.1.0b1, the "Host Matrix" snapin was dropped from th
 ## Changes to original
 Where possible, I've kept the snapin as close to the latest version available in the 2.0.0 branch, however made some changes as below:
 
+### v2.5.x
+- Update HostMatrixSnapin.show() signature to match parent class
+
 ### v2.4.x
 - Remediate CustomizableSidebarSnapin imports, which moved at some point after 2.3
 - Update get_filter_headers parameters 
@@ -29,6 +32,18 @@ Where possible, I've kept the snapin as close to the latest version available in
 - Updated the 'from' for CustomizableSidebarSnapin, snapin_registry, snapin_width was moved from cmk.gui.plugins.sidebar to cmk.gui.plugins.sidebar.utils
 - Change urlencode from html in cmk.gui.globals, to just import from cmk.gui.utils.urls
 
+## CSS issues
+As this is an unsupported plugin, CSS support will eventually be removed from the built-in themes. As of about v2.4.x, the following custom CSS is required to restore the blue color for hosts in downtime (i.e. "stated", where 'd' = downtime):
+
+    OMD[your_site]:~$ cat << EOF > ~/local/share/check_mk/web/htdocs/css/hostmatrix.css
+    > .hostmatrix .stated {
+        background-color: #0af !important;
+        border: 1px solid #0af !important;
+        color: #000 !important;
+    }
+    EOF
+
+Note: this CSS override mechanism is deprecated. The "correct" method is to duplicate and customize the built-in theme, but this may be overkill depending on your requirements.
 
 ## Development / Contributing
 1. Install the desired Raw edition from the CMK website - https://checkmk.com/download?edition=cre
